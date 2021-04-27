@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -30,7 +31,7 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e("MSH","onCreate");
+        Log.e("MSH", "onCreate");
 
 
         for (int i = 0; i < mTitles.length; i++) {
@@ -48,11 +49,29 @@ public class OrderActivity extends AppCompatActivity {
 
         viewPager.setCurrentItem(tab);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Fragment fragment = fragments.get(position);
+                if (fragment instanceof BaseOrderFragment) {
+                    ((BaseOrderFragment) fragment).observerOutChangeRefresh();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 
-    public class FragmentAdapter extends FragmentPagerAdapter {
+    public class FragmentAdapter extends FragmentStatePagerAdapter {
 
         List<Fragment> fragmentList = new ArrayList<Fragment>();
 

@@ -39,21 +39,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button1: {
                 start(1);
             }
+            break;
             case R.id.button2: {
                 start(2);
             }
-
+            break;
             case R.id.button3: {
                 start(3);
             }
-
+            break;
             case R.id.button4: {
                 start(4);
             }
+            break;
             case R.id.button5: {
                 start(5);
             }
-
+            break;
         }
     }
 }
