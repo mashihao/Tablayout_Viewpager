@@ -7,6 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +29,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button3).setOnClickListener(this);
         findViewById(R.id.button4).setOnClickListener(this);
         findViewById(R.id.button5).setOnClickListener(this);
+
+
+        List<String> urls = new ArrayList<String>();
+        for (int i = 0; i < 10; i++) {
+            urls.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2496571732,442429806&fm=26&gp=0.jpg");
+        }
+        LinearLayout imageGroup = findViewById(R.id.iamges);
+        imageGroup.removeAllViews();
+        for (int i = 0; i < urls.size(); i++) {
+            String url = urls.get(i);
+            Log.e("MSH",url);
+            ImageView img = new ImageView(this);
+            img.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            Glide.with(img).load(url).into(img);
+            imageGroup.addView(img);
+
+        }
+
     }
 
 
