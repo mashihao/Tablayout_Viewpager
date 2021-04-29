@@ -32,19 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         List<String> urls = new ArrayList<String>();
-        for (int i = 0; i < 10; i++) {
-            urls.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2496571732,442429806&fm=26&gp=0.jpg");
-        }
+        urls.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2496571732,442429806&fm=26&gp=0.jpg");
+        urls.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1280325423,1024589167&fm=26&gp=0.jpg");
+        urls.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1032039737,3911402456&fm=26&gp=0.jpg");
         LinearLayout imageGroup = findViewById(R.id.iamges);
         imageGroup.removeAllViews();
         for (int i = 0; i < urls.size(); i++) {
             String url = urls.get(i);
-            Log.e("MSH",url);
+            Log.e("MSH", url);
             ImageView img = new ImageView(this);
             img.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             Glide.with(img).load(url).into(img);
             imageGroup.addView(img);
-
         }
 
     }
